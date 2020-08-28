@@ -14,6 +14,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+
+
+
 --use [blackrock_db]
 --exec [usp_GetMarketStats] default
 CREATE PROCEDURE [dbo].[usp_GetMarketStats]
