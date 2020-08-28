@@ -119,6 +119,7 @@ D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTable
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.AspNet.Identity.Core.dll
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.OData.Edm.dll
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.Owin.dll
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.Owin.Security.Cookies.dll
@@ -139,6 +140,7 @@ D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTable
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\System.Web.WebPages.dll
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\System.Web.WebPages.Razor.dll
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\WebGrease.dll
+D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.OData.Edm.xml
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\System.Web.Helpers.xml
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\System.Web.Mvc.xml
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\System.Web.Optimization.xml
@@ -162,7 +164,6 @@ D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTable
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.Owin.Security.Google.xml
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.Owin.Security.Twitter.xml
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\obj\Debug\JQueryDataTableInMVC.csprojAssemblyReference.cache
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\obj\Debug\JQueryDataTableInMVC.csproj.CoreCompileInputs.cache
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\obj\Debug\JQueryDataTableInMVC.csproj.CopyComplete
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\obj\Debug\JQueryDataTableInMVC.dll
