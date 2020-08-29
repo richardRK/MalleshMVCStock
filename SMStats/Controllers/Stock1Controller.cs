@@ -22,10 +22,10 @@ namespace SMStats.Controllers
     public class Stock1Controller : ControllerBase
     {
         [HttpGet("GetAll")]
-        public ContentResult Get()
+        public ContentResult GetFullStock()
         {
 
-            var result = this.getAllStock();
+            var result = this.GetAllStock();
 
             List<BlackStockResultDto> lst = new List<BlackStockResultDto>();
 
@@ -56,7 +56,7 @@ namespace SMStats.Controllers
 
         }
 
-        private List<BlackrockDbStock> getAllStock()
+        private List<BlackrockDbStock> GetAllStock()
         {
             using (blackrock_dbContext context = new blackrock_dbContext())
             {
@@ -74,7 +74,7 @@ namespace SMStats.Controllers
         [HttpGet("TopGainer")]
         public ContentResult GetTopGainer()
         {
-            var list = this.getAllStock();
+            var list = this.GetAllStock();
             var maxResult = list.OrderByDescending(x => x.StockNet).First();
 
             return new ContentResult
@@ -88,7 +88,7 @@ namespace SMStats.Controllers
         [HttpGet("GetDateRanges")]
         public ContentResult GetDateRanges(string stardate, string enddate)
         {
-            var result = this.getAllStock();
+            var result = this.GetAllStock();
 
 
             if (stardate != null && enddate != null)
