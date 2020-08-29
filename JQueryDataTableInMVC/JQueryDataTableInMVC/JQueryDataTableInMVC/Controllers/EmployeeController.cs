@@ -34,6 +34,7 @@ namespace JQueryDataTableInMVC.Controllers
 
                 return Json(new { data = result }, JsonRequestBehavior.AllowGet);
             }
+
         }
 
 
@@ -42,9 +43,6 @@ namespace JQueryDataTableInMVC.Controllers
         {
             using (blackrock_dbEntities1 context = new blackrock_dbEntities1())
             {
-                //var p1 = new SqlParameter("@p1", stardate);
-
-                //var p2 = new SqlParameter("@p2", enddate);
 
                 var clientIdParameter = new SqlParameter("@p1", 4);
 
@@ -61,25 +59,30 @@ namespace JQueryDataTableInMVC.Controllers
                           company_name = x.company_name,
                           stock_date = DateTime.ParseExact(x.stock_date, "dd/MM/yyyy", CultureInfo.InvariantCulture).Date,
                           stock_open = x.stock_open,
-                          stock_high =  x.stock_high,
+                          stock_high = x.stock_high,
                           stock_low = x.stock_low,
-                          stock_close =  x.stock_close,
-                          stock_adj_close =  x.stock_adj_close,
+                          stock_close = x.stock_close,
+                          stock_adj_close = x.stock_adj_close,
                           stock_volume = x.stock_volume,
-                          stock_net =  x.stock_net
+                          stock_net = x.stock_net
                       };
                       lst.Add(resp);
                   });
 
 
-                Date stardate1 = DateTime.ParseExact(stardate, "dd/MM/yyyy", CultureInfo.InvariantCulture).Date;
-                Date enddate1 = DateTime.ParseExact(enddate, "dd/MM/yyyy", CultureInfo.InvariantCulture).Date;
+                if (stardate != null && enddate != null)
+                {
+                    Date stardate1 = DateTime.ParseExact(stardate, "dd/MM/yyyy", CultureInfo.InvariantCulture).Date;
+                    Date enddate1 = DateTime.ParseExact(enddate, "dd/MM/yyyy", CultureInfo.InvariantCulture).Date;
+                    var betweenDates = lst.Where(i => i.stock_date >= stardate1 && i.stock_date <= enddate1).ToList();
 
+                    return Json(new { data = betweenDates }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+                }
 
-                var betweenDates = lst.Where(i => i.stock_date >= stardate1 && i.stock_date <= enddate1);
-
-
-                return Json(new { data = betweenDates }, JsonRequestBehavior.AllowGet);
 
             }
 

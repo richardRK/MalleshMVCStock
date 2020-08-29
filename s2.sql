@@ -36,7 +36,8 @@ BEGIN
 	BEGIN TRY
 		SELECT id
 			,company_name
-			,CONVERT(VARCHAR(10), stock_date, 103) AS stock_date
+			--,CONVERT(VARCHAR(10), stock_date, 103) AS stock_date
+			,stock_date
 			,stock_open
 			,stock_high
 			,stock_low

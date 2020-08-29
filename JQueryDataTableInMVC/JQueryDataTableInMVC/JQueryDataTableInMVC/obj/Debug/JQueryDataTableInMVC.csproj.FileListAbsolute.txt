@@ -168,3 +168,4 @@ D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTable
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\obj\Debug\JQueryDataTableInMVC.csproj.CopyComplete
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\obj\Debug\JQueryDataTableInMVC.dll
 D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\obj\Debug\JQueryDataTableInMVC.pdb
+D:\MVC\MalleshMVCStock\JQueryDataTableInMVC\JQueryDataTableInMVC\JQueryDataTableInMVC\obj\Debug\JQueryDataTableInMVC.csprojAssemblyReference.cache

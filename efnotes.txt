@@ -1,0 +1,28 @@
+Scaffold-DbContext "Server=LAPTOP-PH5TDNNL\ROHISQL;Database=blackrock_db;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+
+e.g.
+
+var products= context.Products
+    .FromSql("EXECUTE dbo.GetProducts")
+    .ToList();
+To use with parameters
+
+var productCategory= "Electronics";
+
+var product = context.Products
+    .FromSql("EXECUTE dbo.GetProductByCategory {0}", productCategory)
+    .ToList();
+or
+
+var productCategory= new SqlParameter("productCategory", "Electronics");
+
+var product = context.Product
+    .FromSql("EXECUTE dbo.GetProductByName  @productCategory", productCategory)
+    .ToList();
+There are certain limitations to execute RAW SQL queries or stored procedures.You can’t use it for INSERT/UPDATE/DELETE. if you want to execute INSERT, UPDATE, DELETE queries, use the ExecuteSqlCommand
+
+var categoryName = "Electronics";
+dataContext.Database
+           .ExecuteSqlCommand("dbo.InsertCategory @p0", categoryName);

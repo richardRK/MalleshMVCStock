@@ -85,11 +85,19 @@
 
 
                 <script>
+
+
                     $(document).ready(function () {
+
+                        if ($.fn.DataTable.isDataTable("#employeeTable")) {
+                            $('#employeeTable').DataTable().clear().destroy();
+                        }
+
+
 
                         $("#employeeTable").DataTable({
                             "ajax": {
-                                "url": "/Employee/GetList",
+                                "url": "/Employee/GetDateRanges",
                                 "type": "GET",
                                 "datatype": "json"
                             },
@@ -129,7 +137,8 @@
                                     processData: false,
                                     data: "stardate=" + start.format('DD/MM/YYYY') + "&enddate=" + end.format('DD/MM/YYYY'),
                                     success: function (data) {
-                                        //alert(data);
+
+
                                     }
                                 })
 
@@ -138,28 +147,6 @@
                         });
 
 
-
-                        //$('#datepicker1,#datepicker1').datepicker({
-                        //    multiSelect: 30, monthsToShow: 3, monthsToStep: 3,
-                        //    prevText: 'Prev months',
-                        //    nextText: 'Next months',
-                        //    onSelect: function (date) {
-                        //        //UPDATED
-                        //        $.ajax({
-                        //            url: '/Employee/GetDateRanges',
-                        //            type: 'POST',
-                        //            async: false,
-                        //            dataType: 'text',
-                        //            processData: false,
-                        //            data: "input=" + JSON.stringify(date) + "&selecteddate1 =" + $("#selecteddate1").val()
-                        //                + "&selecteddate2 =" + $("#selecteddate2").val(),
-
-                        //            success: function (response) {
-                        //                alert(reponse);
-                        //            }
-                        //        })
-                        //    }
-                        //});
 
 
                     });
