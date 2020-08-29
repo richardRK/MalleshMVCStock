@@ -1,3 +1,5 @@
+import { NavbarService } from './services/navbar.service';
+import { TestService } from './services/test.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,7 +22,7 @@ import { StockStatsComponent } from './stock/stock-stats/stock-stats.component';
     ,AgGridModule.withComponents([StockStatsComponent])
     ,AppRoutingModule
   ],
-  providers: [],
+  providers: [TestService,NavbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

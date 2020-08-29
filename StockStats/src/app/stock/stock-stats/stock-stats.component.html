@@ -1,2 +1,3 @@
-<ag-grid-angular style="width: 500px; height: 500px;" class="ag-theme-alpine" [rowData]="rowData" [columnDefs]="columnDefs">
+<ag-grid-angular #myGrid style="height: 500px;" class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs" [gridOptions]="gridOptions" [cacheOverflowSize]="cacheOverflowSize" [infiniteInitialRowCount]="infiniteInitialRowCount" [pagination]=true
+    (gridReady)="onGridReady($event)">
 </ag-grid-angular>
