@@ -6,16 +6,18 @@ import { AppComponent } from './app.component';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { Navbar1Component } from './navbar1/navbar1.component';
+import { StockStatsComponent } from './stock/stock-stats/stock-stats.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     Navbar1Component,
+    StockStatsComponent
   ],
   imports: [
     BrowserModule
-    ,AgGridModule.withComponents([])
+    ,AgGridModule.withComponents([StockStatsComponent])
     ,AppRoutingModule
   ],
   providers: [],
