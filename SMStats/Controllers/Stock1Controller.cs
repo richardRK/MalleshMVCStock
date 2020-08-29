@@ -21,8 +21,7 @@ namespace SMStats.Controllers
     [ApiController]
     public class Stock1Controller : ControllerBase
     {
-        // GET: api/<Stock1Controller>
-        [HttpGet]
+        [HttpGet("GetAll")]
         public ContentResult Get()
         {
 
@@ -52,7 +51,7 @@ namespace SMStats.Controllers
             return new ContentResult
             {
                 ContentType = "application/json",
-                Content = JsonConvert.SerializeObject(new { content = lst, rows = lst }, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
+                Content = JsonConvert.SerializeObject(new { rows = lst }, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
             };
 
         }
@@ -67,44 +66,42 @@ namespace SMStats.Controllers
                   .ToList();
                 return result;
             }
+
+
         }
 
+
+        [HttpGet("TopGainer")]
+        public ContentResult GetTopGainer()
+        {
+            var list = this.getAllStock();
+            var maxResult = list.OrderByDescending(x => x.StockNet).First();
+
+            return new ContentResult
+            {
+                ContentType = "application/json",
+                Content = JsonConvert.SerializeObject(new { rows = maxResult }, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
+            };
+
+        }
+
+        [HttpGet("GetDateRanges")]
         public ContentResult GetDateRanges(string stardate, string enddate)
         {
             var result = this.getAllStock();
-
-
-            List<BlackStockResultDto> lst = new List<BlackStockResultDto>();
-
-            var format = "MM/dd/yyyy hh:mm:ss tt";
-            result.ForEach(x =>
-            {
-                var resp = new BlackStockResultDto()
-                {
-                    company_name = x.CompanyName,
-                    stock_date = DateTime.ParseExact(x.StockDate.ToString(), format, CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"),
-                    stock_open = x.StockOpen,
-                    stock_high = x.StockHigh,
-                    stock_low = x.StockLow,
-                    stock_close = x.StockClose,
-                    stock_adj_close = x.StockAdjClose,
-                    stock_volume = x.StockVolume,
-                    stock_net = x.StockNet
-                };
-                lst.Add(resp);
-            });
 
 
             if (stardate != null && enddate != null)
             {
                 var stardate1 = DateTime.ParseExact(stardate, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
                 var enddate1 = DateTime.ParseExact(enddate, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
-                var betweenDates = lst.Where(i => Date.Parse(i.stock_date) >= Date.Parse(stardate1) && Date.Parse(i.stock_date) <= Date.Parse(enddate1)).ToList();
+
+                var betweenDates = result.Where(i => i.StockDate >= DateTime.ParseExact(stardate1, "dd/MM/yyyy", CultureInfo.InvariantCulture) && i.StockDate <= DateTime.ParseExact(enddate1, "dd/MM/yyyy", CultureInfo.InvariantCulture)).ToList();
 
                 return new ContentResult
                 {
                     ContentType = "application/json",
-                    Content = JsonConvert.SerializeObject(new { content = betweenDates, rows = betweenDates }, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
+                    Content = JsonConvert.SerializeObject(new {rows = betweenDates }, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
                 };
             }
             else
@@ -112,36 +109,13 @@ namespace SMStats.Controllers
                 return new ContentResult
                 {
                     ContentType = "application/json",
-                    Content = JsonConvert.SerializeObject(new { content = result, rows = result }, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
+                    Content = JsonConvert.SerializeObject(new { rows = result }, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
                 };
             }
 
 
         }
 
-        // GET api/<Stock1Controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<Stock1Controller>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<Stock1Controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<Stock1Controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+     
     }
 }

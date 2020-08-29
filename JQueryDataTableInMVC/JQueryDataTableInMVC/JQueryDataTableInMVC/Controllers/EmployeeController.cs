@@ -38,7 +38,6 @@ namespace JQueryDataTableInMVC.Controllers
         }
 
 
-
         public ActionResult GetDateRanges(string stardate, string enddate)
         {
             using (blackrock_dbEntities1 context = new blackrock_dbEntities1())
