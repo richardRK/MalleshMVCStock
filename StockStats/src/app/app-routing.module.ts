@@ -1,3 +1,4 @@
+import { Test55Component } from './test55/test55.component';
 import { StockStatsComponent } from './stock/stock-stats/stock-stats.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -34,6 +35,12 @@ const routes: Routes = [
   {
     path:'navbar',
     component: Navbar1Component
+  },
+
+
+  {
+    path:'test55',
+    component: Test55Component
   }
 ];
 

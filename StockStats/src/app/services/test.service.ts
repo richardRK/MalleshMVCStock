@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class TestService {
+ 
   users = [
     {
       id: 1,
@@ -81,9 +82,16 @@ export class TestService {
     },
   ];
 
-  getUsers(params: IGetRowsParams): Observable<any> {
+  getUsers(): Observable<any> {
     return of(this.users);
   }
+
+
+  getEmployees(): Observable<any> {
+    return of([]);
+  }
+
+
 
   constructor() {}
 }

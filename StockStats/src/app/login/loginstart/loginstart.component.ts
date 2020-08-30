@@ -15,6 +15,6 @@ export class LoginstartComponent implements OnInit {
   }
 
   login() {
-    this.router.navigate(['/stock']);
+    this.router.navigate(['/test55']);
   }
 }

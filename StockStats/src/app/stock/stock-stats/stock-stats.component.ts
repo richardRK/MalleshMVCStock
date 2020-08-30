@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { AgGridAngular } from 'ag-grid-angular';
 import { GridOptions, IGetRowsParams } from 'ag-grid-community';
 import { Subscription } from 'rxjs';
 import { TestService } from 'src/app/services/test.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-stock-stats',
@@ -11,81 +14,67 @@ import { TestService } from 'src/app/services/test.service';
   styleUrls: ['./stock-stats.component.scss'],
 })
 export class StockStatsComponent implements OnInit {
-
-  @ViewChild('myGrid') myGrid: AgGridAngular;
-
-  public gridOptions: Partial<GridOptions>;
-  public gridApi;
-  public gridColumnApi;
-  public columnDefs;
-  public cacheOverflowSize;
-  public maxConcurrentDatasourceRequests;
-  public infiniteInitialRowCount;
-  userSubscriber: Subscription;
-
-  rowData: any;
-
-
-  
-  constructor(public nav: NavbarService,private test: TestService) {
-    nav.show();
-
-    this.columnDefs = [
-      { headerName: 'User Id', field: 'id', sortable: true },
-      { headerName: 'First Name', field: 'first_name', sortable: true, filter: 'agTextColumnFilter' },
-      { headerName: 'Last Name', field: 'last_name', sortable: true, filter: 'agTextColumnFilter' },
-      { headerName: 'Email', field: 'email', sortable: true },
-      { headerName: 'Gender', field: 'gender', sortable: true },
-      { headerName: 'Company', field: 'company', sortable: true }
-    ];
-
-    this.cacheOverflowSize = 2;
-    this.maxConcurrentDatasourceRequests = 2;
-    this.infiniteInitialRowCount = 2;
-
-    this.gridOptions = {
-      headerHeight: 45,
-      rowHeight: 30,
-      cacheBlockSize: 90,
-      paginationPageSize: 90,
-      rowModelType: 'infinite',
-    }
-
-
-
+  constructor(
+    private service: TestService,
+    private navSrvc: NavbarService,
+    private viewContainer: ViewContainerRef
+  ) {
+    navSrvc.show();
   }
 
-  onGridReady(params) {
-    console.log('On Grid Ready');
-
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-
-    var datasource = {
-      getRows: (params: IGetRowsParams) => {
-        //  TODO: Call a service that fetches list of users
-        console.log("Fetching startRow " + params.startRow + " of " + params.endRow);
-        console.log(params);
-        this.test.getUsers(params)
-          .subscribe(data => { 
-            console.log(data);
-            params.successCallback(data) 
-          });
-      }
-    }
-
-    this.gridApi.setDatasource(datasource);
-  }
-
-
-  
-  
-
-  ngOnInit(): void {}
-
+  listData: MatTableDataSource<any>;
+  displayedColumns: string[] = [
+    'fullName',
+    'email',
+    'mobile',
+    'city',
+    'departmentName',
+    'actions',
+  ];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  searchKey: string;
 
  
 
+  ngOnInit() {
+    this.service.getEmployees().subscribe((list) => {
+      // let array = list.map((item) => {
+      //   let departmentName = this.departmentService.getDepartmentName(
+      //     item.payload.val()['department']
+      //   );
+      //   return {
+      //     $key: item.key,
+      //     departmentName,
+      //     ...item.payload.val(),
+      //   };
+      // });
+      this.listData = new MatTableDataSource(list);
+      this.listData.sort = this.sort;
+      this.listData.paginator = this.paginator;
+      this.listData.filterPredicate = (data, filter) => {
+        return this.displayedColumns.some((ele) => {
+          return (
+            ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1
+          );
+        });
+      };
+    });
+  }
+
+  onSearchClear() {
+    this.searchKey = '';
+    this.applyFilter();
+  }
+
+
+  clearView = (event: any) => {
+    this.viewContainer.clear();
+    //this.ngIf = false;
+  };
 
   
+  applyFilter() {
+    this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
 }
