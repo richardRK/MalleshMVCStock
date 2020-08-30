@@ -35,6 +35,7 @@ namespace SMStats.Controllers
             {
                 var resp = new BlackStockResultDto()
                 {
+                    id = x.Id,
                     company_name = x.CompanyName,
                     stock_date = DateTime.ParseExact(x.StockDate.ToString(), format, CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"),
                     stock_open = x.StockOpen,
