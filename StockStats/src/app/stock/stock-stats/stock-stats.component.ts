@@ -38,28 +38,28 @@ export class StockStatsComponent implements OnInit {
  
 
   ngOnInit() {
-    this.service.getEmployees().subscribe((list) => {
-      // let array = list.map((item) => {
-      //   let departmentName = this.departmentService.getDepartmentName(
-      //     item.payload.val()['department']
-      //   );
-      //   return {
-      //     $key: item.key,
-      //     departmentName,
-      //     ...item.payload.val(),
-      //   };
-      // });
-      this.listData = new MatTableDataSource(list);
-      this.listData.sort = this.sort;
-      this.listData.paginator = this.paginator;
-      this.listData.filterPredicate = (data, filter) => {
-        return this.displayedColumns.some((ele) => {
-          return (
-            ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1
-          );
-        });
-      };
-    });
+    // this.service.getEmployees().subscribe((list) => {
+    //   // let array = list.map((item) => {
+    //   //   let departmentName = this.departmentService.getDepartmentName(
+    //   //     item.payload.val()['department']
+    //   //   );
+    //   //   return {
+    //   //     $key: item.key,
+    //   //     departmentName,
+    //   //     ...item.payload.val(),
+    //   //   };
+    //   // });
+    //   this.listData = new MatTableDataSource(list);
+    //   this.listData.sort = this.sort;
+    //   this.listData.paginator = this.paginator;
+    //   this.listData.filterPredicate = (data, filter) => {
+    //     return this.displayedColumns.some((ele) => {
+    //       return (
+    //         ele != 'actions' && data[ele].toLowerCase().indexOf(filter) != -1
+    //       );
+    //     });
+    //   };
+    // });
   }
 
   onSearchClear() {

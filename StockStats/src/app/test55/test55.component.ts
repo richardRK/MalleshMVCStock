@@ -3,6 +3,7 @@ import { NavbarService } from '../services/navbar.service';
 import { TestService } from '../services/test.service';
 import { Grid } from 'ag-grid-community';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
+import { Stock } from '../common/stock';
 
 @Component({
   selector: 'app-test55',
@@ -11,96 +12,58 @@ import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 })
 export class Test55Component implements OnInit {
   protected pagingConf: any = {};
-
   pageSize = 25;
-
-  source: LocalDataSource;
-
-  ngOnInit() {
-    // this.source = new LocalDataSource();
-
-    // this.source.onChanged().subscribe((change) => {
-    //   if (change.action === 'page') {
-    //     this.pageChange(change.paging.page);
-    //   }
-    // });
-  }
-
-  pageChange(pageIndex) {
-    // const loadedRecordCount = this.source.count();
-    // const lastRequestedRecordIndex = pageIndex * this.pageSize;
-    // if (loadedRecordCount <= lastRequestedRecordIndex) {
-    //   let myFilter; //This is your filter.
-    //   myFilter.startIndex = loadedRecordCount + 1;
-    //   myFilter.recordCount = this.pageSize + 100; //extra 100 records improves UX.
-    //   this.myService.getData(myFilter) //.toPromise()
-    //     .then(data => {
-    //       if (this.source.count() > 0){
-    //         data.forEach(d => this.source.add(d));
-    //         this.source.getAll()
-    //         .then(d => this.source.load(d))
-    //     }
-    //       else
-    //         this.source.load(data);
-    //     })
-    // }
-  }
-
-  data = [
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      username: 'Bret',
-      email: 'Sincere@april.biz',
-    },
-    // ... other rows here
-    {
-      id: 11,
-      name: 'Nicholas DuBuque',
-      username: 'Nicholas.Stanton',
-      email: 'Rey.Padberg@rosamond.biz',
-    },
-    {
-      id: 12,
-      name: 'Nicholas DuBuque',
-      username: 'Nicholas.Stanton',
-      email: 'Rey.Padberg@rosamond.biz',
-    },
-
-    {
-      id: 13,
-      name: 'Nicholas DuBuque',
-      username: 'Nicholas.Stanton',
-      email: 'Rey.Padberg@rosamond.biz',
-    },
-
-    {
-      id: 14,
-      name: 'Nicholas DuBuque',
-      username: 'Nicholas.Stanton',
-      email: 'Rey.Padberg@rosamond.biz',
-    },
-  ];
+  // source: LocalDataSource;
+  source: any = new LocalDataSource();
 
   settings = {
-    pager: { perPage: 2 }, //pagination – rows per page
+    pager: { perPage: 5 }, //pagination – rows per page
     hideSubHeader: false, //hide header searchboxes for search (filters)
     display: true,
+    attr: {
+      class: 'table table-bordered',
+    },
     columns: {
+      company_name: {
+        title: 'name',
+      },
       id: {
-        title: 'ID',
+        title: 'id',
       },
-      name: {
-        title: 'Full Name',
+
+      stock_adj_close: {
+        title: 'adj close',
       },
-      username: {
-        title: 'User Name',
+      stock_close: {
+        title: 'close',
       },
-      email: {
-        title: 'Email',
+
+      stock_low: {
+        title: 'low',
+      },
+      stock_high: {
+        title: 'high',
+      },
+
+      stock_open: {
+        title: 'open',
+      },
+
+      stock_date: {
+        title: 'date',
+      },
+
+      stock_net: {
+        title: 'net',
+      },
+
+      stock_volume: {
+        title: 'volume',
       },
     },
   };
+
+  data: any = [];
 
   constructor(
     private service: TestService,
@@ -108,4 +71,38 @@ export class Test55Component implements OnInit {
   ) {
     this.navSrvc.show();
   }
+
+  ngOnInit() {
+    // this.source = new LocalDataSource();
+    // this.source.onChanged().subscribe((change) => {
+    //   if (change.action === 'page') {
+    //     this.pageChange(change.paging.page);
+    //   }
+    // });
+
+    this.service.getAllStocks().subscribe((data) => {
+      this.data = data['rows'];
+      //  this.source.load(data);
+    });
+  }
+
+  // pageChange(pageIndex) {
+  //   const loadedRecordCount = this.source.count();
+  //   const lastRequestedRecordIndex = pageIndex * this.pageSize;
+  //   if (loadedRecordCount <= lastRequestedRecordIndex) {
+  //     let myFilter; //This is your filter.
+  //     myFilter.startIndex = loadedRecordCount + 1;
+  //     myFilter.recordCount = this.pageSize + 100; //extra 100 records improves UX.
+  //     this.myService.getData(myFilter) //.toPromise()
+  //       .then(data => {
+  //         if (this.source.count() > 0){
+  //           data.forEach(d => this.source.add(d));
+  //           this.source.getAll()
+  //           .then(d => this.source.load(d))
+  //       }
+  //         else
+  //           this.source.load(data);
+  //       })
+  //   }
+  // }
 }
