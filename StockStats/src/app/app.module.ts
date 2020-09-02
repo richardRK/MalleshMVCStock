@@ -16,23 +16,30 @@ import { MatTableModule } from '@angular/material/table';
 import { MaterialModule } from './material/material.module';
 import { Test55Component } from './test55/test55.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, Navbar1Component, StockStatsComponent, Test55Component],
+  declarations: [
+    AppComponent,
+    Navbar1Component,
+    StockStatsComponent,
+    Test55Component,
+  ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AgGridModule.withComponents([Test55Component]),
     AppRoutingModule,
     FormsModule,
     CdkTableModule,
     MaterialModule,
     HttpClientModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    BsDatepickerModule.forRoot(),
   ],
 
-
-  providers: [TestService, NavbarService,HttpClientModule],
+  providers: [TestService, NavbarService, HttpClientModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

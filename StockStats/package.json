@@ -28,6 +28,7 @@
     "ag-grid-community": "^23.2.1",
     "font-awesome": "^4.7.0",
     "ng2-smart-table": "^1.6.0",
+    "ngx-bootstrap": "^6.1.0",
     "rxjs": "~6.5.5",
     "rxjs-compat": "^6.6.2",
     "tslib": "^2.0.0",
