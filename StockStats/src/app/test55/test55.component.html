@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-2" style="width: fit-content;margin-top: 30px;">
-            <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Top Gainers</button>
+            <button type="button" class="btn btn-primary" (click)="topGainers(template)">Top Gainers</button>
         </div>
 
 
@@ -31,3 +31,12 @@
 <!-- 
 <ng2-smart-table [settings]="settings" [source]="data" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
  (createConfirm)="onCreateConfirm($event)"></ng2-smart-table> -->
+
+
+<!-- <div class="row">
+    <div>
+      <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDelete($event)"
+              (editConfirm)="onSave($event)"
+              (createConfirm)="onCreate($event)" ></ng2-smart-table>
+  </div>         -->

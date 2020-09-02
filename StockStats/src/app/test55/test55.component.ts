@@ -17,8 +17,17 @@ export class Test55Component implements OnInit {
   source: any = new LocalDataSource();
 
   settings = {
+    hideHeader: false,
+    hideSubHeader: false,
+    // add: {
+    //   inputClass: '',
+    //   addButtonContent: 'Add New',
+    //   createButtonContent: 'Create',
+    //   cancelButtonContent: 'Cancel',
+    //   confirmCreate: false,
+    // },
+
     pager: { perPage: 5 }, //pagination – rows per page
-    hideSubHeader: false, //hide header searchboxes for search (filters)
     display: true,
     attr: {
       class: 'table table-bordered',
@@ -27,20 +36,33 @@ export class Test55Component implements OnInit {
       custom: [
         {
           name: 'edit',
-          title: '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
+          title: '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
         },
         // {
         //   name: 'add',
-        //   title: '<i class="fa fa-plus" aria-hidden="true"></i>'
+        //   title: '<i class="fa fa-plus" aria-hidden="true"></i>',
+        //   // position:  'top',
         // },
         {
           name: 'delete',
-          title: '<i class="fa fa-trash" aria-hidden="true"></i>'
-        }
+          title: '<i class="fa fa-trash" aria-hidden="true"></i>',
+        },
+
+        
       ],
-      add: true,
+
+      position: 'right',
+
+      add: {
+        add: true,
+        addButtonContent: '<i class="fa fa-plus" aria-hidden="true"></i>',
+        createButtonContent: '<i class="fa fa-plus" aria-hidden="true"></i>',
+        cancelButtonContent: 'Cancel',
+        confirmCreate: false,
+      },
+      // add: true,
       edit: false,
-      delete: false
+      delete: false,
     },
 
     columns: {
@@ -106,6 +128,7 @@ export class Test55Component implements OnInit {
     });
   }
 
+  topGainers() {}
   // pageChange(pageIndex) {
   //   const loadedRecordCount = this.source.count();
   //   const lastRequestedRecordIndex = pageIndex * this.pageSize;
