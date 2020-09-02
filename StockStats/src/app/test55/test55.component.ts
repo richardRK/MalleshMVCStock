@@ -23,6 +23,26 @@ export class Test55Component implements OnInit {
     attr: {
       class: 'table table-bordered',
     },
+    actions: {
+      custom: [
+        {
+          name: 'edit',
+          title: '<i class="fas fa-edit"></i>'
+        },
+        {
+          name: 'save',
+          title: '<nb-icon icon="checkmark"></nb-icon>'
+        },
+        {
+          name: 'cancel',
+          title: '<nb-icon icon="close-circle"></nb-icon>'
+        }
+      ],
+      add: false,
+      edit: false,
+      delete: false
+    },
+
     columns: {
       company_name: {
         title: 'name',
