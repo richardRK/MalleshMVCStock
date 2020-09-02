@@ -128,7 +128,7 @@ export class Test55Component implements OnInit {
     });
   }
 
-  topGainers() {}
+  topGainers(templates) {}
   // pageChange(pageIndex) {
   //   const loadedRecordCount = this.source.count();
   //   const lastRequestedRecordIndex = pageIndex * this.pageSize;
