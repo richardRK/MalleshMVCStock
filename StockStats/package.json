@@ -26,6 +26,7 @@
     "@angular/router": "~10.0.2",
     "ag-grid-angular": "^23.2.1",
     "ag-grid-community": "^23.2.1",
+    "font-awesome": "^4.7.0",
     "ng2-smart-table": "^1.6.0",
     "rxjs": "~6.5.5",
     "rxjs-compat": "^6.6.2",

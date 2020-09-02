@@ -1,6 +1,7 @@
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "../node_modules//font-awesome/css//font-awesome.css";
 .ag-theme-alpine {
     @include ag-theme-alpine();
 }

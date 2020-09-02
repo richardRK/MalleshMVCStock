@@ -27,18 +27,18 @@ export class Test55Component implements OnInit {
       custom: [
         {
           name: 'edit',
-          title: '<i class="fas fa-edit"></i>'
+          title: '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
         },
+        // {
+        //   name: 'add',
+        //   title: '<i class="fa fa-plus" aria-hidden="true"></i>'
+        // },
         {
-          name: 'save',
-          title: '<nb-icon icon="checkmark"></nb-icon>'
-        },
-        {
-          name: 'cancel',
-          title: '<nb-icon icon="close-circle"></nb-icon>'
+          name: 'delete',
+          title: '<i class="fa fa-trash" aria-hidden="true"></i>'
         }
       ],
-      add: false,
+      add: true,
       edit: false,
       delete: false
     },
